@@ -1,7 +1,10 @@
 #!/usr/bin/python
 #
-# LDAP Directory management, wrapper for python ldap (http://www.python-ldap.org/)
-# Provides higher level control of LDAP Directory management 
+# LDAP Directory management, wrapper for python-ldap (http://www.python-ldap.org)
+# Provides higher level control of LDAP Directory management
+#
+# Some code was originally taken from samples available here:
+# http://www.grotan.com/ldap/python-ldap-samples.html
 #
 #
 # Derak Berreyesa
@@ -103,7 +106,7 @@ class Directory(object):
     def disconnect(self):
 	    # disconnect
 	    self.l.unbind_s()
-	    
+
 
 if __name__ == '__main__':
 	print 'This is directory.py'
