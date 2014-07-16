@@ -71,7 +71,7 @@ group_dn_list = ['cn=Engineers,ou=Groups,dc=ad,dc=mycompnay,dc=com',
 
 # create a Directory instance and start doing work 
 d = directory.Directory();
-d.connect('ldaps://ad.mycompnay.com', 'AD\admin_user', password)
+d.connect('ldaps://ad.mycompnay.com', 'AD\admin_user', 'admin_password')
 d.add_user(dn, attrs)
 d.add_user_to_groups(dn, group_dn_list)
 d.set_password(dn, password)
