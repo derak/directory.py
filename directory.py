@@ -89,7 +89,7 @@ class Directory(object):
             self.result['status'] = 'Successfully changed password \n'
 
 
-    def enable_user(self, dn, flag):
+    def modify_user(self, dn, flag):
         """Modify user, flag is userAccountControl property"""
         # 512 will set user account to enabled
         # change the user to enabled
