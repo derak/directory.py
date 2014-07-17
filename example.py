@@ -75,7 +75,7 @@ d.connect('ldaps://ad.mycompnay.com', 'AD\admin_user', 'admin_password')
 d.add_user(dn, attrs)
 d.add_user_to_groups(dn, group_dn_list)
 d.set_password(dn, password)
-d.enable_user(dn, NORMAL_ACCOUNT + DONT_EXPIRE_PASSWORD)
+d.modify_user(dn, NORMAL_ACCOUNT + DONT_EXPIRE_PASSWORD)
 d.disconnect()
 
 result = d.get_result()
