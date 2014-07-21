@@ -51,8 +51,8 @@ class Directory(object):
             self.l.add_s(dn,ldif)
 
         except ldap.LDAPError, e:
-            sys.stderr.write('Error with LDAP add User: ' + str(e) + '\n')
-            self.result['status'] = 'Error with LDAP add User: ' + str(e) + '\n'
+            sys.stderr.write('Error with LDAP add_user: ' + str(e) + '\n')
+            self.result['status'] = 'Error with LDAP add_user: ' + str(e) + '\n'
             print json.dumps(self.result)
             sys.exit(1)
 
@@ -65,8 +65,8 @@ class Directory(object):
                 self.l.modify_s(g, mod_attrs)
 
         except ldap.LDAPError, e:
-            sys.stderr.write('Error with LDAP addToGroups: ' + str(e) + '\n')
-            self.result['status'] = 'Error with LDAP addToGroups: ' + str(e) + '\n'
+            sys.stderr.write('Error: adding user to group(s): ' + str(e) + '\n')
+            self.result['status'] = 'Error: adding user to group(s): ' + str(e) + '\n'
             print json.dumps(self.result)
             sys.exit(1)
 
@@ -98,11 +98,11 @@ class Directory(object):
         try:
             self.l.modify_s(dn, mod_acct)
         except ldap.LDAPError, error_message:
-            self.result['status'] = 'Error to enable user: ' + str(error_message) + '\n'
+            self.result['status'] = 'Error: could not modify user: ' + str(error_message) + '\n'
             print json.dumps(self.result)
             sys.exit(1)
         else:
-            self.result['status'] = 'Success enable user \n'
+            self.result['status'] = 'Successfully modified user \n'
 
     def disconnect(self):
         self.l.unbind_s()
