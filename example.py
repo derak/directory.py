@@ -22,20 +22,23 @@ username    = 'jblow'
 password    = 'some_secret_password'
 
 email = username + '@mycompany.com'
-displayName = '%s %s' % (firstname, lastname)
+display_name = '%s %s' % (firstname, lastname)
+
+# The base dn for all users
+base_dn = 'ou=Users,dc=ad,dc=mycompany,dc=com')
 
 # The dn of our new entry/object
-dn="cn=%s,%s" % (displayName, 'ou=Users,dc=ad,dc=mycompany,dc=com')
+dn="cn=%s,%s" % (display_name, base_dn)
 
 # A dict to help build the "body" of the object
 attrs = {}
 attrs['objectclass'] = ['top','person','organizationalPerson','user']
-attrs['cn'] = str(displayName)
+attrs['cn'] = str(display_name)
 attrs['sAMAccountname'] = str(username)
 attrs['userPassword'] = str(password)
 attrs['givenName'] = str(firstname)
 attrs['sn'] = str(lastname)
-attrs['displayName'] = str(displayName)
+attrs['displayName'] = str(display_name)
 attrs['userPrincipalName'] = "%s@ad.mycompany.com" % username
 attrs['mail'] = str(email)
 
@@ -76,6 +79,13 @@ d.add_user(dn, attrs)
 d.add_user_to_groups(dn, group_dn_list)
 d.set_password(dn, password)
 d.modify_user(dn, NORMAL_ACCOUNT + DONT_EXPIRE_PASSWORD)
+
+# choose the attributes you want to print 
+print_attrs = ['sn','mail']
+
+# print all users
+d.print_users(base_dn, print_attrs)
+
 d.disconnect()
 
 result = d.get_result()

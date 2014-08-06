@@ -104,6 +104,12 @@ class Directory(object):
         else:
             self.result['status'] = 'Successfully modified user \n'
 
+    def print_users(self, base_dn, attrs):
+        filter = '(objectclass=person)'
+        users = self.l.search_s(base_dn, ldap.SCOPE_SUBTREE, filter, attrs)
+        for row in users:
+            print row
+
     def disconnect(self):
         self.l.unbind_s()
 
