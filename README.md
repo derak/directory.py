@@ -1,12 +1,10 @@
 directory.py
 =================
 
-LDAP Directory management, wrapper for python-ldap (http://www.python-ldap.org)
+LDAP Directory Management, wrapper for python-ldap (http://www.python-ldap.org).
 
-This is a work in progress. 
-
-This module provides higher level control of LDAP Directory management.
+This module provides high level control over an LDAP Directory.
 
 
-Some code was originally taken from samples available here:
+Some code was originally built on examples available here:
 http://www.grotan.com/ldap/python-ldap-samples.html
